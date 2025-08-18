@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Include Header Component -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to Campus Connect</h1>
+                <p class="hero-subtitle">Discover events, join study groups, connect with clubs, and make the most of your university experience. Stay connected with your campus community.</p>
+                <div class="hero-buttons">
+                    <a href="#events" class="btn btn-primary">
+                        <i class="fas fa-calendar-alt"></i>
+                        Explore Events
+                    </a>
+                    <a href="#clubs" class="btn btn-outline">
+                        <i class="fas fa-users"></i>
+                        Join Clubs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Carousel Section -->
+    <section class="section" id="events">
+        <div class="container">
+            <h2 class="section-title">Featured Events</h2>
+            <p class="section-subtitle">Don't miss out on these exciting upcoming events happening on campus</p>
+            
+            <div class="events-carousel">
+                <div class="carousel-container" id="eventsCarousel">
+                    <div class="carousel-slide">
+                        <div class="grid-3">
+                            <div class="event-card">
+                                <div class="event-image">
+                                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop" alt="Tech Workshop">
+                                    <div class="event-date">Dec 15</div>
+                                </div>
+                                <div class="event-content">
+                                    <h3 class="event-title">Tech Innovation Workshop</h3>
+                                    <p class="event-description">Join us for an exciting workshop on the latest technology trends and innovations in the industry.</p>
+                                    <div class="event-meta">
+                                        <span class="event-location">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            Main Auditorium
+                                        </span>
+                                        <span class="event-time">
+                                            <i class="fas fa-clock"></i>
+                                            2:00 PM
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary">Register Now</button>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card">
+                                <div class="event-image">
+                                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=200&fit=crop" alt="Cultural Festival">
+                                    <div class="event-date">Dec 18</div>
+                                </div>
+                                <div class="event-content">
+                                    <h3 class="event-title">Cultural Diversity Festival</h3>
+                                    <p class="event-description">Celebrate the rich cultural diversity of our campus community with music, dance, and food.</p>
+                                    <div class="event-meta">
+                                        <span class="event-location">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            Campus Grounds
+                                        </span>
+                                        <span class="event-time">
+                                            <i class="fas fa-clock"></i>
+                                            6:00 PM
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary">Learn More</button>
+                                </div>
+                            </div>
+                            
+                            <div class="event-card">
+                                <div class="event-image">
+                                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop" alt="Career Fair">
+                                    <div class="event-date">Dec 20</div>
+                                </div>
+                                <div class="event-content">
+                                    <h3 class="event-title">Annual Career Fair</h3>
+                                    <p class="event-description">Connect with top employers and explore exciting career opportunities in various industries.</p>
+                                    <div class="event-meta">
+                                        <span class="event-location">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            Conference Center
+                                        </span>
+                                        <span class="event-time">
+                                            <i class="fas fa-clock"></i>
+                                            10:00 AM
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-primary">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-dots" id="carouselDots">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Added Events Grid -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Recently Added Events</h2>
+            <p class="section-subtitle">Check out the latest events that have been added to our platform</p>
+            
+            <div class="events-grid" id="recentEventsGrid">
+                <!-- Events will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials Carousel -->
+    <section class="section" style="background: var(--gray-50);">
+        <div class="container">
+            <h2 class="section-title">What Students Say</h2>
+            <p class="section-subtitle">Hear from your fellow students about their experiences with Campus Connect</p>
+            
+            <div class="testimonials-carousel">
+                <div class="carousel-container" id="testimonialsCarousel">
+                    <div class="carousel-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah Johnson">
+                            </div>
+                            <p class="testimonial-text">"Campus Connect has completely transformed my university experience. I've discovered amazing events and made friends through study groups that I never would have met otherwise."</p>
+                            <h4 class="testimonial-name">Sarah Johnson</h4>
+                            <p class="testimonial-role">Computer Science, Year 3</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Michael Chen">
+                            </div>
+                            <p class="testimonial-text">"The platform makes it so easy to stay updated with campus activities. I love how I can filter events by my interests and get notifications for things I care about."</p>
+                            <h4 class="testimonial-name">Michael Chen</h4>
+                            <p class="testimonial-role">Business Administration, Year 2</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emily Rodriguez">
+                            </div>
+                            <p class="testimonial-text">"Joining clubs through Campus Connect has helped me develop leadership skills and find my passion. The community is incredibly supportive and welcoming."</p>
+                            <h4 class="testimonial-name">Emily Rodriguez</h4>
+                            <p class="testimonial-role">Psychology, Year 4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-dots" id="testimonialDots">
+                    <span class="carousel-dot active"></span>
+                    <span class="carousel-dot"></span>
+                    <span class="carousel-dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Events Photo Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Campus Life in Pictures</h2>
+            <p class="section-subtitle">Take a look at the vibrant campus life and memorable moments captured at our events</p>
+            
+            <div class="photo-gallery" id="photoGallery">
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=200&fit=crop" alt="Career Fair 2023">
+                    <div class="gallery-overlay">
+                        <h4>Career Fair 2023</h4>
+                        <p>Students networking with industry professionals</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=300&h=200&fit=crop" alt="Cultural Festival">
+                    <div class="gallery-overlay">
+                        <h4>Cultural Festival</h4>
+                        <p>Celebrating diversity through music and dance</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop" alt="Tech Workshop">
+                    <div class="gallery-overlay">
+                        <h4>Tech Workshop</h4>
+                        <p>Students learning about emerging technologies</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop" alt="Sports Tournament">
+                    <div class="gallery-overlay">
+                        <h4>Sports Tournament</h4>
+                        <p>Competitive spirit on the field</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=200&fit=crop" alt="Art Exhibition">
+                    <div class="gallery-overlay">
+                        <h4>Art Exhibition</h4>
+                        <p>Showcasing student creativity</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Study Group">
+                    <div class="gallery-overlay">
+                        <h4>Study Group</h4>
+                        <p>Collaborative learning in action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Clubs Section -->
+    <section class="section" id="clubs">
+        <div class="container">
+            <h2 class="section-title">Featured Clubs</h2>
+            <p class="section-subtitle">Join these popular clubs and connect with like-minded students</p>
+            
+            <div class="clubs-grid">
+                <div class="club-card">
+                    <div class="club-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Sports Club">
+                    </div>
+                    <div class="club-content">
+                        <h3 class="club-title">Sports & Fitness Club</h3>
+                        <p class="club-description">Stay active and healthy with regular sports activities, fitness sessions, and team competitions.</p>
+                        <div class="club-stats">
+                            <span><i class="fas fa-users"></i> 150+ members</span>
+                            <span><i class="fas fa-calendar"></i> Weekly events</span>
+                        </div>
+                        <button class="btn btn-primary">Join Club</button>
+                    </div>
+                </div>
+                
+                <div class="club-card">
+                    <div class="club-image">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop" alt="Tech Club">
+                    </div>
+                    <div class="club-content">
+                        <h3 class="club-title">Technology Innovation Club</h3>
+                        <p class="club-description">Explore cutting-edge technologies, participate in hackathons, and build amazing projects together.</p>
+                        <div class="club-stats">
+                            <span><i class="fas fa-users"></i> 200+ members</span>
+                            <span><i class="fas fa-calendar"></i> Bi-weekly meetups</span>
+                        </div>
+                        <button class="btn btn-primary">Join Club</button>
+                    </div>
+                </div>
+                
+                <div class="club-card">
+                    <div class="club-image">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop" alt="Arts Club">
+                    </div>
+                    <div class="club-content">
+                        <h3 class="club-title">Creative Arts Club</h3>
+                        <p class="club-description">Express your creativity through painting, photography, music, and various art forms.</p>
+                        <div class="club-stats">
+                            <span><i class="fas fa-users"></i> 80+ members</span>
+                            <span><i class="fas fa-calendar"></i> Monthly exhibitions</span>
+                        </div>
+                        <button class="btn btn-primary">Join Club</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="section" style="background: var(--gray-50);">
+        <div class="container">
+            <h2 class="section-title">Quick Links</h2>
+            <p class="section-subtitle">Access important resources and information quickly</p>
+            
+            <div class="quick-links-grid">
+                <a href="events.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>All Events</h3>
+                    <p>Browse and register for upcoming events</p>
+                </a>
+                
+                <a href="study-groups.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Study Groups</h3>
+                    <p>Join or create study groups for your courses</p>
+                </a>
+                
+                <a href="clubs.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>All Clubs</h3>
+                    <p>Discover and join student organizations</p>
+                </a>
+                
+                <a href="about.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>About Us</h3>
+                    <p>Learn more about Campus Connect</p>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Help & Support</h3>
+                    <p>Get help with using the platform</p>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Settings</h3>
+                    <p>Manage your account preferences</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-section">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                        <h3>Campus Connect</h3>
+                    </div>
+                    <p>Connecting students, fostering community, and enhancing the university experience through technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="study-groups.html">Study Groups</a></li>
+                        <li><a href="clubs.html">Clubs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> MIT-ADT University, Pune</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@campusconnect.edu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Campus Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal for Photo Gallery -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Load Header Component -->
+    <script>
+        // Load header component
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-container').innerHTML = html;
+                // Re-initialize header functionality
+                if (typeof Header !== 'undefined') {
+                    new Header();
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+
+    <!-- Home Page JavaScript -->
+    <script>
+        class HomePage {
+            constructor() {
+                this.initializeElements();
+                this.bindEvents();
+                this.loadEventsData();
+                this.startCarousels();
+            }
+
+            initializeElements() {
+                // Events carousel
+                this.eventsCarousel = document.getElementById('eventsCarousel');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.carouselDots = document.getElementById('carouselDots');
+                
+                // Testimonials carousel
+                this.testimonialsCarousel = document.getElementById('testimonialsCarousel');
+                this.testimonialDots = document.getElementById('testimonialDots');
+                
+                // Photo gallery
+                this.photoGallery = document.getElementById('photoGallery');
+                this.lightboxModal = document.getElementById('lightboxModal');
+                this.lightboxImage = document.getElementById('lightboxImage');
+                this.lightboxCaption = document.getElementById('lightboxCaption');
+                this.lightboxClose = document.getElementById('lightboxClose');
+                
+                // Recent events grid
+                this.recentEventsGrid = document.getElementById('recentEventsGrid');
+            }
+
+            bindEvents() {
+                // Events carousel navigation
+                this.prevBtn?.addEventListener('click', () => this.navigateCarousel('prev', 'events'));
+                this.nextBtn?.addEventListener('click', () => this.navigateCarousel('next', 'events'));
+                
+                // Carousel dots
+                this.carouselDots?.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('carousel-dot')) {
+                        const index = Array.from(this.carouselDots.children).indexOf(e.target);
+                        this.goToSlide(index, 'events');
+                    }
+                });
+                
+                // Testimonials dots
+                this.testimonialDots?.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('carousel-dot')) {
+                        const index = Array.from(this.testimonialDots.children).indexOf(e.target);
+                        this.goToSlide(index, 'testimonials');
+                    }
+                });
+                
+                // Photo gallery lightbox
+                this.photoGallery?.addEventListener('click', (e) => {
+                    const galleryItem = e.target.closest('.gallery-item');
+                    if (galleryItem) {
+                        this.openLightbox(galleryItem);
+                    }
+                });
+                
+                // Close lightbox
+                this.lightboxClose?.addEventListener('click', () => this.closeLightbox());
+                this.lightboxModal?.addEventListener('click', (e) => {
+                    if (e.target === this.lightboxModal) {
+                        this.closeLightbox();
+                    }
+                });
+                
+                // Smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(anchor.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+
+            navigateCarousel(direction, type) {
+                const carousel = type === 'events' ? this.eventsCarousel : this.testimonialsCarousel;
+                const dots = type === 'events' ? this.carouselDots : this.testimonialDots;
+                const slides = carousel.children;
+                const currentIndex = parseInt(carousel.dataset.currentIndex || 0);
+                
+                let newIndex;
+                if (direction === 'next') {
+                    newIndex = (currentIndex + 1) % slides.length;
+                } else {
+                    newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+                }
+                
+                this.goToSlide(newIndex, type);
+            }
+
+            goToSlide(index, type) {
+                const carousel = type === 'events' ? this.eventsCarousel : this.testimonialsCarousel;
+                const dots = type === 'events' ? this.carouselDots : this.testimonialDots;
+                const slides = carousel.children;
+                
+                // Update carousel position
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+                carousel.dataset.currentIndex = index;
+                
+                // Update dots
+                Array.from(dots.children).forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            startCarousels() {
+                // Auto-play for events carousel
+                setInterval(() => {
+                    this.navigateCarousel('next', 'events');
+                }, 5000);
+                
+                // Auto-play for testimonials carousel
+                setInterval(() => {
+                    this.navigateCarousel('next', 'testimonials');
+                }, 4000);
+            }
+
+            openLightbox(galleryItem) {
+                const image = galleryItem.querySelector('img');
+                const overlay = galleryItem.querySelector('.gallery-overlay');
+                
+                this.lightboxImage.src = galleryItem.dataset.image;
+                this.lightboxImage.alt = image.alt;
+                this.lightboxCaption.innerHTML = overlay.innerHTML;
+                
+                this.lightboxModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeLightbox() {
+                this.lightboxModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            async loadEventsData() {
+                try {
+                    // Simulate loading events from JSON
+                    const events = [
+                        {
+                            title: "Startup Pitch Competition",
+                            description: "Present your innovative business ideas to industry experts and win exciting prizes.",
+                            date: "Dec 30",
+                            location: "Innovation Center",
+                            time: "1:00 PM",
+                            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop"
+                        },
+                        {
+                            title: "Environmental Awareness Workshop",
+                            description: "Learn about sustainability practices and how to make a positive impact on the environment.",
+                            date: "Jan 5",
+                            location: "Green Campus",
+                            time: "4:00 PM",
+                            image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=200&fit=crop"
+                        },
+                        {
+                            title: "International Food Festival",
+                            description: "Taste cuisines from around the world and celebrate cultural diversity through food.",
+                            date: "Jan 8",
+                            location: "Campus Plaza",
+                            time: "6:00 PM",
+                            image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=200&fit=crop"
+                        }
+                    ];
+                    
+                    this.renderRecentEvents(events);
+                } catch (error) {
+                    console.error('Error loading events:', error);
+                }
+            }
+
+            renderRecentEvents(events) {
+                if (!this.recentEventsGrid) return;
+                
+                const eventsHTML = events.map(event => `
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="${event.image}" alt="${event.title}">
+                            <div class="event-date">${event.date}</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">${event.title}</h3>
+                            <p class="event-description">${event.description}</p>
+                            <div class="event-meta">
+                                <span class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${event.location}
+                                </span>
+                                <span class="event-time">
+                                    <i class="fas fa-clock"></i>
+                                    ${event.time}
+                                </span>
+                            </div>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                this.recentEventsGrid.innerHTML = eventsHTML;
+            }
+        }
+
+        // Initialize home page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new HomePage();
+        });
+    </script>
+
+    <!-- Additional CSS for Home Page -->
+    <style>
+        /* Testimonials Styles */
+        .testimonials-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin: 0 var(--spacing-md);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto var(--spacing-lg);
+            border: 4px solid var(--primary-color);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-lg);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .testimonial-role {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        /* Photo Gallery Styles */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform var(--transition-normal);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            padding: var(--spacing-lg);
+            transform: translateY(100%);
+            transition: transform var(--transition-normal);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.125rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Lightbox Styles */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: var(--radius-lg);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .lightbox-caption h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Clubs Styles */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .club-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .club-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .club-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .club-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .club-card:hover .club-image img {
+            transform: scale(1.1);
+        }
+
+        .club-content {
+            padding: var(--spacing-lg);
+        }
+
+        .club-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-800);
+        }
+
+        .club-description {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .club-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .club-stats span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        /* Quick Links Styles */
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .quick-link-card {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            color: var(--primary-color);
+        }
+
+        .quick-link-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .quick-link-card h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.125rem;
+        }
+
+        .quick-link-card p {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-section h4 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-section ul li a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html> 

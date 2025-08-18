@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Club Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Club Header -->
+    <header class="club-header">
+        <div class="container">
+            <div class="club-header-content">
+                <div class="club-logo-section">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                    <div>
+                        <h1>Campus Connect</h1>
+                        <span class="club-badge">Club Dashboard</span>
+                    </div>
+                </div>
+                
+                <nav class="club-nav">
+                    <a href="home.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="events.html" class="nav-link">
+                        <i class="fas fa-calendar"></i>
+                        <span>Events</span>
+                    </a>
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-users"></i>
+                        <span>Club</span>
+                    </a>
+                    <div class="club-user">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=40&h=40&fit=crop" alt="Club" class="club-avatar">
+                        <div class="club-user-info">
+                            <span class="club-name">Technology Innovation Club</span>
+                            <span class="club-role">Club Admin</span>
+                        </div>
+                        <button class="club-logout" id="clubLogout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="club-main">
+        <div class="container">
+            <!-- Club Statistics -->
+            <section class="club-stats">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="totalClubEvents">0</h3>
+                            <p class="stat-label">Total Events</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon pending">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="pendingClubEvents">0</h3>
+                            <p class="stat-label">Pending Approval</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon approved">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="approvedClubEvents">0</h3>
+                            <p class="stat-label">Approved Events</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="totalClubRegistrations">0</h3>
+                            <p class="stat-label">Total Registrations</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Club Events Section -->
+            <section class="club-events-section">
+                <div class="section-header">
+                    <h2>Club Events</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addEventBtn">
+                            <i class="fas fa-plus"></i>
+                            Add New Event
+                        </button>
+                        <div class="search-container">
+                            <input type="text" id="clubEventsSearch" placeholder="Search events..." class="search-input">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <select id="clubStatusFilter" class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="club-events-table-container">
+                    <table class="club-events-table" id="clubEventsTable">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Registrations</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clubEventsTableBody">
+                            <!-- Club events will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Upcoming Campus Events Section -->
+            <section class="upcoming-events-section">
+                <div class="section-header">
+                    <h2>Upcoming Campus Events</h2>
+                    <a href="events.html" class="btn btn-outline">
+                        <i class="fas fa-external-link-alt"></i>
+                        View All Events
+                    </a>
+                </div>
+                
+                <div class="upcoming-events-grid" id="upcomingEventsGrid">
+                    <!-- Upcoming events will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Event Creation Modal -->
+    <div class="modal-overlay" id="eventCreationModal">
+        <div class="modal event-creation-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Create New Event
+                </h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Event Templates -->
+                <div class="event-templates">
+                    <h4>Choose a Template</h4>
+                    <div class="template-grid" id="templateGrid">
+                        <div class="template-card" data-template="workshop">
+                            <div class="template-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h5>Workshop</h5>
+                            <p>Educational sessions and skill-building activities</p>
+                        </div>
+                        <div class="template-card" data-template="competition">
+                            <div class="template-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h5>Competition</h5>
+                            <p>Contests and competitive events</p>
+                        </div>
+                        <div class="template-card" data-template="seminar">
+                            <div class="template-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h5>Seminar</h5>
+                            <p>Expert talks and presentations</p>
+                        </div>
+                        <div class="template-card" data-template="social">
+                            <div class="template-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5>Social Event</h5>
+                            <p>Networking and social gatherings</p>
+                        </div>
+                        <div class="template-card" data-template="custom">
+                            <div class="template-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h5>Custom</h5>
+                            <p>Create your own event from scratch</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Creation Form -->
+                <form id="eventCreationForm" class="event-creation-form" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventTitle" class="form-label">
+                                Event Title <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="eventTitle" 
+                                name="eventTitle" 
+                                class="form-input" 
+                                required
+                                placeholder="Enter event title"
+                            >
+                            <div class="error-message" id="eventTitleError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventCategory" class="form-label">
+                                Category <span class="required">*</span>
+                            </label>
+                            <select id="eventCategory" name="eventCategory" class="form-select" required>
+                                <option value="">Select category</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Business">Business</option>
+                                <option value="Environment">Environment</option>
+                                <option value="Food">Food</option>
+                                <option value="Music">Music</option>
+                                <option value="Wellness">Wellness</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="error-message" id="eventCategoryError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate" class="form-label">
+                                Date <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="date" 
+                                id="eventDate" 
+                                name="eventDate" 
+                                class="form-input" 
+                                required
+                            >
+                            <div class="error-message" id="eventDateError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventTime" class="form-label">
+                                Time <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="time" 
+                                id="eventTime" 
+                                name="eventTime" 
+                                class="form-input" 
+                                required
+                            >
+                            <div class="error-message" id="eventTimeError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventLocation" class="form-label">
+                                Location <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="eventLocation" 
+                                name="eventLocation" 
+                                class="form-input" 
+                                required
+                                placeholder="Enter event location"
+                            >
+                            <div class="error-message" id="eventLocationError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDuration" class="form-label">
+                                Duration <span class="required">*</span>
+                            </label>
+                            <select id="eventDuration" name="eventDuration" class="form-select" required>
+                                <option value="">Select duration</option>
+                                <option value="1 Hour">1 Hour</option>
+                                <option value="2 Hours">2 Hours</option>
+                                <option value="3 Hours">3 Hours</option>
+                                <option value="4 Hours">4 Hours</option>
+                                <option value="6 Hours">6 Hours</option>
+                                <option value="8 Hours">8 Hours</option>
+                                <option value="1 Day">1 Day</option>
+                                <option value="2 Days">2 Days</option>
+                                <option value="3 Days">3 Days</option>
+                                <option value="1 Week">1 Week</option>
+                            </select>
+                            <div class="error-message" id="eventDurationError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDifficulty" class="form-label">
+                                Difficulty Level <span class="required">*</span>
+                            </label>
+                            <select id="eventDifficulty" name="eventDifficulty" class="form-select" required>
+                                <option value="">Select difficulty</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="All Levels">All Levels</option>
+                            </select>
+                            <div class="error-message" id="eventDifficultyError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventMaxParticipants" class="form-label">
+                                Max Participants <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="number" 
+                                id="eventMaxParticipants" 
+                                name="eventMaxParticipants" 
+                                class="form-input" 
+                                required
+                                min="1"
+                                max="1000"
+                                placeholder="Enter maximum participants"
+                            >
+                            <div class="error-message" id="eventMaxParticipantsError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDescription" class="form-label">
+                            Description <span class="required">*</span>
+                        </label>
+                        <textarea 
+                            id="eventDescription" 
+                            name="eventDescription" 
+                            class="form-textarea" 
+                            rows="4"
+                            required
+                            placeholder="Describe your event in detail..."
+                        ></textarea>
+                        <div class="error-message" id="eventDescriptionError"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventPrice" class="form-label">
+                                Registration Fee (₹)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="eventPrice" 
+                                name="eventPrice" 
+                                class="form-input" 
+                                min="0"
+                                placeholder="0 for free events"
+                                value="0"
+                            >
+                            <div class="error-message" id="eventPriceError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventImage" class="form-label">
+                                Event Image
+                            </label>
+                            <input 
+                                type="file" 
+                                id="eventImage" 
+                                name="eventImage" 
+                                class="form-file-input" 
+                                accept="image/*"
+                            >
+                            <div class="file-input-wrapper">
+                                <i class="fas fa-upload"></i>
+                                <span>Choose an image or drag it here</span>
+                            </div>
+                            <div class="error-message" id="eventImageError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Event Preview -->
+                    <div class="event-preview" id="eventPreview" style="display: none;">
+                        <h4>Event Preview</h4>
+                        <div class="preview-card">
+                            <div class="preview-image" id="previewImage">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="preview-content">
+                                <h5 id="previewTitle">Event Title</h5>
+                                <p id="previewDescription">Event description will appear here...</p>
+                                <div class="preview-meta">
+                                    <span id="previewDate">Date</span>
+                                    <span id="previewTime">Time</span>
+                                    <span id="previewLocation">Location</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelEventBtn">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitEventBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit for Approval
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Club Dashboard JavaScript -->
+    <script src="club-dashboard.js"></script>
+
+    <!-- Additional CSS for Club Dashboard -->
+    <style>
+        /* Club Header */
+        .club-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .club-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .club-logo-section {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .club-logo-section img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .club-logo-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 0;
+        }
+
+        .club-badge {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .club-nav {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .nav-link i {
+            font-size: 1rem;
+        }
+
+        .club-user {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            background: var(--gray-50);
+        }
+
+        .club-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .club-user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .club-name {
+            font-weight: 600;
+            color: var(--gray-800);
+            font-size: 0.875rem;
+        }
+
+        .club-role {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .club-logout {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .club-logout:hover {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        /* Main Content */
+        .club-main {
+            padding: var(--spacing-xl) 0;
+            background: var(--gray-50);
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Club Statistics */
+        .club-stats {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            background: var(--gradient);
+        }
+
+        .stat-icon.pending {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .stat-icon.approved {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .stat-icon.users {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .stat-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 0 0 var(--spacing-xs) 0;
+        }
+
+        .stat-content p {
+            color: var(--gray-600);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 0;
+        }
+
+        .section-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Club Events Section */
+        .club-events-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-container input {
+            padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 2.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            width: 250px;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: var(--spacing-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+
+        .filter-select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            background: var(--white);
+        }
+
+        /* Club Events Table */
+        .club-events-table-container {
+            overflow-x: auto;
+        }
+
+        .club-events-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-lg);
+        }
+
+        .club-events-table th,
+        .club-events-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .club-events-table th {
+            background: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .club-events-table tr:hover {
+            background: var(--gray-50);
+        }
+
+        .event-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .event-image {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+        }
+
+        .event-details h4 {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 0 0 var(--spacing-xs) 0;
+        }
+
+        .event-details p {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .status-badge {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-badge.approved {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .status-badge.rejected {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .btn-action {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-edit {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-edit:hover {
+            background: var(--purple-600);
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: var(--white);
+        }
+
+        .btn-delete:hover {
+            background: #dc2626;
+        }
+
+        /* Upcoming Events Section */
+        .upcoming-events-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .upcoming-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .upcoming-event-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .upcoming-event-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .upcoming-event-image {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .upcoming-event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upcoming-event-content {
+            padding: var(--spacing-md);
+        }
+
+        .upcoming-event-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .upcoming-event-club {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .upcoming-event-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        /* Event Creation Modal */
+        .event-creation-modal {
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .event-templates {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .event-templates h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--gray-800);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .template-card {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .template-card:hover {
+            border-color: var(--primary-color);
+            background: var(--secondary-color);
+        }
+
+        .template-card.selected {
+            border-color: var(--primary-color);
+            background: var(--secondary-color);
+        }
+
+        .template-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+            font-size: 1.25rem;
+        }
+
+        .template-card h5 {
+            margin-bottom: var(--spacing-xs);
+            color: var(--gray-800);
+        }
+
+        .template-card p {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* Event Creation Form */
+        .event-creation-form {
+            border-top: 1px solid var(--gray-200);
+            padding-top: var(--spacing-xl);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--white);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(101, 85, 143, 0.1);
+        }
+
+        .form-input.error,
+        .form-select.error {
+            border-color: #ef4444;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-file-input {
+            display: none;
+        }
+
+        .file-input-wrapper {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .file-input-wrapper:hover {
+            border-color: var(--primary-color);
+            background: var(--secondary-color);
+        }
+
+        .file-input-wrapper i {
+            font-size: 2rem;
+            color: var(--gray-400);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .file-input-wrapper span {
+            color: var(--gray-600);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+            min-height: 1.25rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+            margin-top: var(--spacing-xl);
+        }
+
+        /* Event Preview */
+        .event-preview {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .event-preview h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--gray-800);
+        }
+
+        .preview-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .preview-image {
+            height: 150px;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            font-size: 2rem;
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-content {
+            padding: var(--spacing-md);
+        }
+
+        .preview-content h5 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-800);
+        }
+
+        .preview-content p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .preview-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .club-header-content {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .club-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .section-actions {
+                justify-content: stretch;
+            }
+
+            .search-container input {
+                width: 100%;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .club-events-table {
+                font-size: 0.875rem;
+            }
+
+            .event-cell {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .upcoming-events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .club-main {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .club-events-section,
+            .upcoming-events-section {
+                padding: var(--spacing-lg);
+            }
+
+            .stat-card {
+                padding: var(--spacing-lg);
+            }
+        }
+    </style>
+</body>
+</html>

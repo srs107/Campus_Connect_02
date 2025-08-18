@@ -1,0 +1,594 @@
+<!-- Header Component -->
+<header class="header">
+    <div class="nav-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+            <h1>Campus Connect</h1>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+            <a href="home.html" class="active">Home</a>
+            <a href="events.html">Events</a>
+            <a href="study-groups.html">Study Groups</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search events, clubs, or people..." id="searchInput">
+        </div>
+
+        <!-- User Actions -->
+        <div class="user-actions">
+            <button class="notification-btn" id="notificationBtn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="user-menu" id="userMenu">
+                <i class="fas fa-user-circle"></i>
+            </button>
+            
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo-section">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                <h1>Campus Connect</h1>
+            </div>
+            <button class="mobile-nav-close" id="mobileNavClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search events, clubs, or people..." id="mobileSearchInput">
+        </div>
+        
+        <nav class="mobile-nav-links">
+            <a href="home.html" class="active">Home</a>
+            <a href="events.html">Events</a>
+            <a href="study-groups.html">Study Groups</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="about.html">About</a>
+        </nav>
+        
+        <div class="user-actions">
+            <button class="notification-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Notification Dropdown -->
+<div class="notification-dropdown" id="notificationDropdown">
+    <div class="notification-header">
+        <h3>Notifications</h3>
+        <button class="mark-all-read">Mark all read</button>
+    </div>
+    <div class="notification-list">
+        <div class="notification-item unread">
+            <div class="notification-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="notification-content">
+                <p>New event: Tech Workshop tomorrow at 2 PM</p>
+                <span class="notification-time">2 hours ago</span>
+            </div>
+        </div>
+        <div class="notification-item unread">
+            <div class="notification-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="notification-content">
+                <p>Study group invitation: Advanced Mathematics</p>
+                <span class="notification-time">5 hours ago</span>
+            </div>
+        </div>
+        <div class="notification-item">
+            <div class="notification-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="notification-content">
+                <p>Congratulations! You won the coding competition</p>
+                <span class="notification-time">1 day ago</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Menu Dropdown -->
+<div class="user-menu-dropdown" id="userMenuDropdown">
+    <div class="user-info">
+        <img src="https://via.placeholder.com/40x40/65558f/ffffff?text=U" alt="User Avatar" class="user-avatar">
+        <div class="user-details">
+            <p class="user-name">John Doe</p>
+            <p class="user-role">Student</p>
+        </div>
+    </div>
+    <div class="user-menu-links">
+        <a href="profile.html">
+            <i class="fas fa-user"></i>
+            Profile
+        </a>
+        <a href="settings.html">
+            <i class="fas fa-cog"></i>
+            Settings
+        </a>
+        <a href="help.html">
+            <i class="fas fa-question-circle"></i>
+            Help & Support
+        </a>
+        <hr>
+        <a href="#" class="logout-link">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// Header JavaScript functionality
+class Header {
+    constructor() {
+        this.initializeElements();
+        this.bindEvents();
+        this.setActiveLink();
+        this.loadUserData();
+    }
+
+    initializeElements() {
+        this.mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        this.mobileNav = document.getElementById('mobileNav');
+        this.mobileNavClose = document.getElementById('mobileNavClose');
+        this.notificationBtn = document.getElementById('notificationBtn');
+        this.notificationDropdown = document.getElementById('notificationDropdown');
+        this.userMenu = document.getElementById('userMenu');
+        this.userMenuDropdown = document.getElementById('userMenuDropdown');
+        this.themeToggle = document.getElementById('themeToggle');
+        this.logoutBtn = document.getElementById('logoutBtn');
+        this.searchInput = document.getElementById('searchInput');
+        this.mobileSearchInput = document.getElementById('mobileSearchInput');
+        this.toastContainer = document.getElementById('toastContainer');
+    }
+
+    bindEvents() {
+        // Mobile menu toggle
+        this.mobileMenuBtn?.addEventListener('click', () => this.toggleMobileMenu());
+        this.mobileNavClose?.addEventListener('click', () => this.closeMobileMenu());
+
+        // Notification dropdown
+        this.notificationBtn?.addEventListener('click', () => this.toggleNotificationDropdown());
+
+        // User menu dropdown
+        this.userMenu?.addEventListener('click', () => this.toggleUserMenu());
+
+        // Theme toggle
+        this.themeToggle?.addEventListener('click', () => this.toggleTheme());
+
+        // Logout
+        this.logoutBtn?.addEventListener('click', () => this.logout());
+        document.querySelector('.logout-link')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.logout();
+        });
+
+        // Search functionality
+        this.searchInput?.addEventListener('input', (e) => this.handleSearch(e.target.value));
+        this.mobileSearchInput?.addEventListener('input', (e) => this.handleSearch(e.target.value));
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => this.handleOutsideClick(e));
+
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeAllDropdowns();
+            }
+        });
+    }
+
+    toggleMobileMenu() {
+        this.mobileNav.classList.toggle('active');
+        document.body.style.overflow = this.mobileNav.classList.contains('active') ? 'hidden' : '';
+        
+        // Animate hamburger menu
+        const spans = this.mobileMenuBtn.querySelectorAll('span');
+        spans.forEach((span, index) => {
+            if (this.mobileNav.classList.contains('active')) {
+                if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                if (index === 1) span.style.opacity = '0';
+                if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                span.style.transform = '';
+                span.style.opacity = '';
+            }
+        });
+    }
+
+    closeMobileMenu() {
+        this.mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Reset hamburger menu
+        const spans = this.mobileMenuBtn.querySelectorAll('span');
+        spans.forEach(span => {
+            span.style.transform = '';
+            span.style.opacity = '';
+        });
+    }
+
+    toggleNotificationDropdown() {
+        this.notificationDropdown.classList.toggle('active');
+        this.userMenuDropdown.classList.remove('active');
+    }
+
+    toggleUserMenu() {
+        this.userMenuDropdown.classList.toggle('active');
+        this.notificationDropdown.classList.remove('active');
+    }
+
+    toggleTheme() {
+        const isDark = document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        const icon = this.themeToggle.querySelector('i');
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        
+        this.showToast('Theme changed successfully', 'success');
+    }
+
+    handleSearch(query) {
+        // Implement search functionality
+        console.log('Searching for:', query);
+        // You can add AJAX calls here to search events, clubs, or people
+    }
+
+    handleOutsideClick(e) {
+        if (!e.target.closest('.notification-btn') && !e.target.closest('.notification-dropdown')) {
+            this.notificationDropdown.classList.remove('active');
+        }
+        
+        if (!e.target.closest('.user-menu') && !e.target.closest('.user-menu-dropdown')) {
+            this.userMenuDropdown.classList.remove('active');
+        }
+    }
+
+    closeAllDropdowns() {
+        this.notificationDropdown.classList.remove('active');
+        this.userMenuDropdown.classList.remove('active');
+        this.closeMobileMenu();
+    }
+
+    setActiveLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+        const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    loadUserData() {
+        const username = localStorage.getItem('username');
+        const userRole = localStorage.getItem('userRole');
+        
+        if (username) {
+            const userNameElements = document.querySelectorAll('.user-name');
+            userNameElements.forEach(el => {
+                el.textContent = username;
+            });
+        }
+        
+        if (userRole) {
+            const userRoleElements = document.querySelectorAll('.user-role');
+            userRoleElements.forEach(el => {
+                el.textContent = userRole.charAt(0).toUpperCase() + userRole.slice(1);
+            });
+        }
+    }
+
+    logout() {
+        // Clear localStorage
+        localStorage.removeItem('username');
+        localStorage.removeItem('userRole');
+        
+        // Show logout toast
+        this.showToast('Logged out successfully', 'success');
+        
+        // Redirect to login page after a short delay
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1000);
+    }
+
+    showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `
+            <div class="toast-header">
+                <span class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                <button class="toast-close">&times;</button>
+            </div>
+            <div class="toast-message">${message}</div>
+        `;
+        
+        this.toastContainer.appendChild(toast);
+        
+        // Show toast
+        setTimeout(() => toast.classList.add('show'), 100);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 5000);
+        
+        // Close button functionality
+        toast.querySelector('.toast-close').addEventListener('click', () => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        });
+    }
+}
+
+// Initialize header when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new Header();
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        const themeIcon = document.querySelector('.theme-toggle i');
+        if (themeIcon) themeIcon.className = 'fas fa-sun';
+    }
+});
+
+// Add CSS for dropdowns and additional styles
+const additionalStyles = `
+<style>
+.notification-dropdown,
+.user-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-normal);
+    z-index: 1000;
+}
+
+.notification-dropdown.active,
+.user-menu-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.notification-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.mark-all-read {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-100);
+    transition: background-color var(--transition-fast);
+}
+
+.notification-item:hover {
+    background: var(--gray-50);
+}
+
+.notification-item.unread {
+    background: var(--secondary-color);
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.notification-content p {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 0.875rem;
+    color: var(--gray-800);
+}
+
+.notification-time {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: var(--spacing-md);
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.user-role {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+
+.user-menu-links {
+    padding: var(--spacing-sm) 0;
+}
+
+.user-menu-links a {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    text-decoration: none;
+    color: var(--gray-700);
+    transition: background-color var(--transition-fast);
+}
+
+.user-menu-links a:hover {
+    background: var(--gray-50);
+    color: var(--primary-color);
+}
+
+.user-menu-links a i {
+    margin-right: var(--spacing-md);
+    width: 16px;
+}
+
+.user-menu-links hr {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin: var(--spacing-sm) 0;
+}
+
+.logout-link {
+    color: #ef4444 !important;
+}
+
+.logout-link:hover {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+/* Dark theme styles */
+.dark-theme {
+    --white: #1f2937;
+    --gray-50: #374151;
+    --gray-100: #4b5563;
+    --gray-200: #6b7280;
+    --gray-300: #9ca3af;
+    --gray-400: #d1d5db;
+    --gray-500: #e5e7eb;
+    --gray-600: #f3f4f6;
+    --gray-700: #f9fafb;
+    --gray-800: #ffffff;
+    --gray-900: #ffffff;
+}
+
+.dark-theme .header {
+    background: var(--white);
+    border-bottom-color: var(--gray-100);
+}
+
+.dark-theme .notification-dropdown,
+.dark-theme .user-menu-dropdown {
+    background: var(--white);
+    border-color: var(--gray-100);
+}
+
+.dark-theme .notification-item:hover {
+    background: var(--gray-50);
+}
+
+.dark-theme .notification-item.unread {
+    background: rgba(101, 85, 143, 0.1);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .notification-dropdown,
+    .user-menu-dropdown {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        min-width: auto;
+        margin: 0 var(--spacing-md);
+    }
+}
+</style>
+`;
+
+// Inject additional styles
+document.head.insertAdjacentHTML('beforeend', additionalStyles);
+</script> 

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - MIT-ADT University</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: none;
+        }
+
+        .role-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .role-btn {
+            padding: 12px 24px;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .role-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .role-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .form-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 18px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #764ba2;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .spinner {
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+            }
+            
+            .gradient-text {
+                font-size: 2rem;
+            }
+            
+            .role-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .role-btn {
+                max-width: 200px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiM2Njc5ZWEiLz4KPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNTAiIGZpbGw9IiM3NjRiYTIiLz4KPHN2ZyB4PSIxMCIgeT0iMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCAxMDAgODAiIGZpbGw9IndoaXRlIj4KPHBhdGggZD0iTTEwIDQwTDMwIDIwSDcwTDUwIDQwTDMwIDYwSDEwWiIvPgo8L3N2Zz4KPC9zdmc+" alt="MIT-ADT University Logo">
+        </div>
+        
+        <h1 class="gradient-text">Campus Connect</h1>
+        
+        <div class="role-buttons">
+            <button class="role-btn active" data-role="student">Student</button>
+            <button class="role-btn" data-role="club">Club</button>
+            <button class="role-btn" data-role="admin">Admin</button>
+        </div>
+        
+        <div class="form-container">
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-users"></i>
+                    <select id="roleSelect" required>
+                        <option value="">Select Role</option>
+                        <option value="student">Student</option>
+                        <option value="club">Club</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Login
+                    <span class="loading">
+                        <span class="spinner"></span>
+                    </span>
+                </button>
+                
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+        </div>
+        
+        <a href="#" class="forgot-password">Forgot password?</a>
+        
+        <div class="footer">
+            <p>&copy; 2024 MIT-ADT University. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Role button functionality
+        const roleButtons = document.querySelectorAll('.role-btn');
+        const roleSelect = document.getElementById('roleSelect');
+        let currentRole = 'student';
+
+        roleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                roleButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Update current role
+                currentRole = button.dataset.role;
+                
+                // Update select dropdown
+                roleSelect.value = currentRole;
+            });
+        });
+
+        // Role select change handler
+        roleSelect.addEventListener('change', () => {
+            const selectedRole = roleSelect.value;
+            if (selectedRole) {
+                // Remove active class from all buttons
+                roleButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to corresponding button
+                const correspondingButton = document.querySelector(`[data-role="${selectedRole}"]`);
+                if (correspondingButton) {
+                    correspondingButton.classList.add('active');
+                }
+                
+                currentRole = selectedRole;
+            }
+        });
+
+        // Form submission
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const role = roleSelect.value;
+
+            // Validation
+            if (!username || !password || !role) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            // Show loading state
+            showLoading(true);
+            hideError();
+
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Authentication logic
+            let isValid = false;
+            let redirectUrl = '';
+
+            switch (role) {
+                case 'student':
+                    // Students can login with any credentials
+                    isValid = true;
+                    redirectUrl = 'home.html';
+                    break;
+                    
+                case 'admin':
+                    // Admin: admin/admin123
+                    if (username === 'admin' && password === 'admin123') {
+                        isValid = true;
+                        redirectUrl = 'admin.html';
+                    }
+                    break;
+                    
+                case 'club':
+                    // Club: club/club123
+                    if (username === 'club' && password === 'club123') {
+                        isValid = true;
+                        redirectUrl = 'club-dashboard.html';
+                    }
+                    break;
+            }
+
+            if (isValid) {
+                // Store user role in localStorage
+                localStorage.setItem('userRole', role);
+                localStorage.setItem('username', username);
+                
+                // Redirect to appropriate page
+                window.location.href = redirectUrl;
+            } else {
+                showError('Invalid credentials for selected role');
+                showLoading(false);
+            }
+        });
+
+        function showLoading(show) {
+            const loading = document.querySelector('.loading');
+            const btnText = loginBtn.querySelector('span:not(.loading)');
+            
+            if (show) {
+                loading.style.display = 'inline-block';
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Logging in...';
+                loginBtn.appendChild(loading);
+            } else {
+                loading.style.display = 'none';
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+            }
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+
+        function hideError() {
+            errorMessage.style.display = 'none';
+        }
+
+        // Initialize role select with current role
+        roleSelect.value = currentRole;
+    </script>
+</body>
+</html> 
