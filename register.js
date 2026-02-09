@@ -48,6 +48,7 @@ class RegistrationPage {
         this.rollNumberError = document.getElementById('rollNumberError');
         this.departmentError = document.getElementById('departmentError');
         this.yearOfStudyError = document.getElementById('yearOfStudyError');
+        this.passwordError = document.getElementById('passwordError');
 
         // Success modal elements
         this.successModal = document.getElementById('successModal');
@@ -55,6 +56,10 @@ class RegistrationPage {
         this.registrationDetails = document.getElementById('registrationDetails');
         this.viewEventsBtn = document.getElementById('viewEventsBtn');
         this.downloadTicketBtn = document.getElementById('downloadTicketBtn');
+
+        // Password strength elements
+        this.passwordInput = document.getElementById('password');
+        this.passwordStrength = document.getElementById('passwordStrength');
     }
 
     bindEvents() {
@@ -69,6 +74,8 @@ class RegistrationPage {
         this.emailInput?.addEventListener('blur', () => this.validateEmail());
         this.phoneInput?.addEventListener('blur', () => this.validatePhone());
         this.rollNumberInput?.addEventListener('blur', () => this.validateRollNumber());
+        this.passwordInput?.addEventListener('input', () => this.showPasswordStrength());
+        this.passwordInput?.addEventListener('blur', () => this.validatePassword());
         this.departmentSelect?.addEventListener('change', () => this.validateDepartment());
         this.yearOfStudySelect?.addEventListener('change', () => this.validateYearOfStudy());
 
@@ -310,6 +317,56 @@ class RegistrationPage {
         return true;
     }
 
+    validatePassword() {
+        const value = this.passwordInput.value;
+        const errorElement = this.passwordError;
+        
+        if (!value) {
+            this.showFieldError(this.passwordInput, errorElement, 'Password is required');
+            this.showPasswordStrength('');
+            return false;
+        }
+        
+        if (value.length < 8) {
+            this.showFieldError(this.passwordInput, errorElement, 'Password must be at least 8 characters');
+            this.showPasswordStrength('weak');
+            return false;
+        }
+        
+        // At least one uppercase, one lowercase, one number, one special char
+        const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+        if (!strongRegex.test(value)) {
+            this.showFieldError(this.passwordInput, errorElement, 'Password must include uppercase, lowercase, number, and special character');
+            this.showPasswordStrength('medium');
+            return false;
+        }
+        
+        this.clearFieldError(this.passwordInput, errorElement);
+        this.showPasswordStrength('strong');
+        return true;
+    }
+
+    showPasswordStrength(level) {
+        if (!this.passwordStrength) return;
+        const value = this.passwordInput.value;
+        let strength = level;
+        if (!level) {
+            if (!value) {
+                this.passwordStrength.textContent = '';
+                return;
+            }
+            if (value.length < 8) strength = 'weak';
+            else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value)) strength = 'medium';
+            else strength = 'weak';
+        }
+        let text = '', color = '';
+        if (strength === 'weak') { text = 'Weak'; color = '#ef4444'; }
+        else if (strength === 'medium') { text = 'Medium'; color = '#f59e0b'; }
+        else if (strength === 'strong') { text = 'Strong'; color = '#10b981'; }
+        this.passwordStrength.textContent = text;
+        this.passwordStrength.style.color = color;
+    }
+
     showFieldError(input, errorElement, message) {
         input.classList.add('error');
         errorElement.textContent = message;
@@ -318,6 +375,15 @@ class RegistrationPage {
     clearFieldError(input, errorElement) {
         input.classList.remove('error');
         errorElement.textContent = '';
+    }
+
+    clearAllErrors() {
+        [this.fullNameError, this.emailError, this.phoneError, this.passwordError, this.rollNumberError, this.departmentError, this.yearOfStudyError].forEach(err => {
+            if (err) err.textContent = '';
+        });
+        [this.fullNameInput, this.emailInput, this.phoneInput, this.passwordInput, this.rollNumberInput, this.departmentSelect, this.yearOfStudySelect].forEach(input => {
+            if (input) input.classList.remove('error');
+        });
     }
 
     formatPhoneNumber(e) {
@@ -333,6 +399,7 @@ class RegistrationPage {
             this.validateFullName(),
             this.validateEmail(),
             this.validatePhone(),
+            this.validatePassword(),
             this.validateRollNumber(),
             this.validateDepartment(),
             this.validateYearOfStudy()

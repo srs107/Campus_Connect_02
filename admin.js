@@ -400,7 +400,7 @@ class AdminDashboard {
     handleLogout() {
         if (confirm('Are you sure you want to logout?')) {
             // In a real app, this would clear authentication tokens
-            window.location.href = 'home.html';
+            window.location.href = 'index.html';
         }
     }
 

@@ -165,59 +165,7 @@
         </div>
     </div>
 
-    <!-- Footer Component -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo-section">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
-                        <h3>Campus Connect</h3>
-                    </div>
-                    <p>Connecting students, fostering community, and enhancing the university experience through technology.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="study-groups.html">Study Groups</a></li>
-                        <li><a href="clubs.html">Clubs</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> MIT-ADT University, Pune</li>
-                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
-                        <li><i class="fas fa-envelope"></i> info@campusconnect.edu</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Campus Connect. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
 
     <!-- Load Header Component -->
     <script>
@@ -225,8 +173,24 @@
         fetch('header.html')
             .then(response => response.text())
             .then(html => {
-                document.getElementById('header-container').innerHTML = html;
-                // Re-initialize header functionality
+                const container = document.getElementById('header-container');
+                container.innerHTML = html;
+
+                // Execute embedded scripts from header.html
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const scripts = temp.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const s = document.createElement('script');
+                    if (oldScript.src) {
+                        s.src = oldScript.src;
+                    } else {
+                        s.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(s);
+                });
+
+                // Initialize header if available
                 if (typeof Header !== 'undefined') {
                     new Header();
                 }
@@ -235,7 +199,16 @@
     </script>
 
     <!-- Events Page JavaScript -->
-    <script src="events.js"></script>
+    <script src="dataStore.js" defer></script>
+    <script src="events.js" defer></script>
+
+    <!-- Load Footer Component -->
+    <script>
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(html => { document.getElementById('footer-container').innerHTML = html; })
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
 
     <!-- Additional CSS for Events Page -->
     <style>
@@ -738,6 +711,110 @@
 
             .pagination-numbers {
                 display: none;
+            }
+        }
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-section h4 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-section ul li a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>

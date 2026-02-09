@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "MIT Adventure Club",
+    "description": "For adventure enthusiasts who love trekking, camping, and exploring the outdoors. Join us for treks, night camps, and nature exploration while building teamwork and leadership skills.",
+    "logo": "images/adventure-club-logo.png",
+    "memberCount": 120,
+    "foundedYear": 2015,
+    "president": "Rahul Sharma",
+    "contact": "adventure@mitadt.edu"
+  }
+]
+
+

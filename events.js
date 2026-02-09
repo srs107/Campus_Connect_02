@@ -15,6 +15,7 @@ class EventsPage {
         
         this.initializeElements();
         this.bindEvents();
+        this.loadInitialFilters();
         this.loadEventsData();
     }
 
@@ -78,12 +79,15 @@ class EventsPage {
             this.showLoading();
             
             // Load events from JSON file
-            const response = await fetch('data/events.json');
-            if (!response.ok) {
-                throw new Error('Failed to load events data');
+            if (window.DataStore && DataStore.api && DataStore.api.getEvents) {
+                this.events = await DataStore.api.getEvents();
+            } else {
+                const response = await fetch('data/events.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load events data');
+                }
+                this.events = await response.json();
             }
-
-            this.events = await response.json();
             
             // Process events (add status, format dates, etc.)
             this.processEvents();
@@ -104,6 +108,21 @@ class EventsPage {
             console.error('Error loading events:', error);
             this.showError('Failed to load events. Please try again later.');
         }
+    }
+
+    loadInitialFilters() {
+        try {
+            if (window.DataStore && DataStore.getFilterState) {
+                const saved = DataStore.getFilterState('events');
+                if (saved && typeof saved === 'object') {
+                    this.filters = { ...this.filters, ...saved };
+                    if (this.searchInput && saved.search !== undefined) this.searchInput.value = saved.search;
+                    if (this.statusFilter && saved.status) this.statusFilter.value = saved.status;
+                    if (this.sortFilter && saved.sort) this.sortFilter.value = saved.sort;
+                    if (this.clubFilter && saved.club) this.clubFilter.value = saved.club;
+                }
+            }
+        } catch {}
     }
 
     processEvents() {
@@ -192,6 +211,7 @@ class EventsPage {
     handleFilterChange(type, value) {
         this.filters[type] = value;
         this.currentPage = 1; // Reset to first page when filters change
+        this.persistFilters();
         this.applyFilters();
     }
 
@@ -210,6 +230,7 @@ class EventsPage {
         this.searchClear.style.display = 'none';
         this.currentPage = 1;
         
+        this.persistFilters();
         this.applyFilters();
     }
 
@@ -304,7 +325,16 @@ class EventsPage {
                 this.filters.club = 'all';
                 break;
         }
+        this.persistFilters();
         this.applyFilters();
+    }
+
+    persistFilters() {
+        try {
+            if (window.DataStore && DataStore.setFilterState) {
+                DataStore.setFilterState('events', { ...this.filters });
+            }
+        } catch {}
     }
 
     changeView(view) {

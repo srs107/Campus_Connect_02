@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - About</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                <h1>Campus Connect</h1>
+            </div>
+
+            <nav class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="study-groups.html">Study Groups</a>
+                <a href="clubs.html">Clubs</a>
+                <a href="profile.html">Profile</a>
+                <a href="about.html" class="active">About</a>
+            </nav>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search events, clubs, or people..." id="searchInput">
+            </div>
+
+            <div class="user-actions">
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="user-menu" id="userMenu">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <button class="mobile-menu" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-header">
+                <div class="logo-section">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                    <h1>Campus Connect</h1>
+                </div>
+                <button class="mobile-nav-close" id="mobileNavClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search events, clubs, or people..." id="mobileSearchInput">
+            </div>
+            
+            <nav class="mobile-nav-links">
+                <a href="home.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="study-groups.html">Study Groups</a>
+                <a href="clubs.html">Clubs</a>
+                <a href="profile.html">Profile</a>
+                <a href="about.html" class="active">About</a>
+            </nav>
+            
+            <div class="user-actions">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIconMobile"></i>
+                </button>
+                <a href="profile.html" class="btn btn-outline" style="min-width: 100px;">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="notification-dropdown" id="notificationDropdown">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="mark-all-read">Mark all read</button>
+        </div>
+        <div class="notification-list">
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="notification-content">
+                    <p>New event: Tech Workshop tomorrow at 2 PM</p>
+                    <span class="notification-time">2 hours ago</span>
+                </div>
+            </div>
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="notification-content">
+                    <p>Study group invitation: Advanced Mathematics</p>
+                    <span class="notification-time">5 hours ago</span>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="notification-content">
+                    <p>Congratulations! You won the coding competition</p>
+                    <span class="notification-time">1 day ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="user-menu-dropdown" id="userMenuDropdown">
+        <div class="user-info">
+            <img src="https://via.placeholder.com/40x40/65558f/ffffff?text=U" alt="User Avatar" class="user-avatar">
+            <div class="user-details">
+                <p class="user-name">John Doe</p>
+                <p class="user-role">Student</p>
+            </div>
+        </div>
+        <div class="user-menu-links">
+            <a href="profile.html">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+            <a href="help.html">
+                <i class="fas fa-question-circle"></i>
+                Help & Support
+            </a>
+            <hr>
+            <a href="#" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <button class="chatbot-button" id="chatbotButton" aria-label="Open chat">
+        <i class="fas fa-comments"></i>
+        <span class="chatbot-badge" id="chatbotBadge" style="display:none;">1</span>
+        <span class="sr-only">Open chat</span>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow" aria-live="polite" aria-label="Campus Connect Chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>Campus Assistant</span>
+            </div>
+            <div class="chatbot-controls">
+                <button class="chatbot-control" id="chatbotMinimize" aria-label="Minimize chat"><i class="fas fa-minus"></i></button>
+                <button class="chatbot-control" id="chatbotClose" aria-label="Close chat"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-body">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-typing" id="chatTyping" style="display:none;">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." aria-label="Chat input">
+            <button class="chat-send" id="chatSend" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top: var(--spacing-2xl);">
+        <div class="container">
+            <div class="card" style="padding: var(--spacing-2xl);">
+                <h1>About Campus Connect</h1>
+                <p style="margin-top: var(--spacing-md); color: var(--gray-700);">Campus Connect helps students discover events, join clubs, and collaborate. This page will soon feature our mission, team, and roadmap.</p>
+                <div class="grid-2" style="margin-top: var(--spacing-xl);">
+                    <div class="card" style="padding: var(--spacing-xl);">
+                        <h3>Our Mission</h3>
+                        <p style="margin-top: var(--spacing-sm); color: var(--gray-700);">To connect students and build communities through technology.</p>
+                    </div>
+                    <div class="card" style="padding: var(--spacing-xl);">
+                        <h3>Roadmap</h3>
+                        <p style="margin-top: var(--spacing-sm); color: var(--gray-700);">Study groups, improved profiles, and more powerful club tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-section">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
+                        <h3>Campus Connect</h3>
+                    </div>
+                    <p>Connecting students, fostering community, and enhancing the university experience through technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="study-groups.html">Study Groups</a></li>
+                        <li><a href="clubs.html">Clubs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> MIT-ADT University, Pune</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@campusconnect.edu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="yearCopy"></span> Campus Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function(){
+            var y = document.getElementById('yearCopy');
+            if (y) { y.textContent = new Date().getFullYear(); }
+        })();
+    </script>
+</body>
+</html> 

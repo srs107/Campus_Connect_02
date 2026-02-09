@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Help</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="card" style="padding: var(--spacing-xl);">
+                <h2>Help & Support</h2>
+                <p style="margin-top: var(--spacing-sm); color: var(--gray-700);">Frequently asked questions will be available soon.</p>
+                <div style="margin-top: var(--spacing-lg);">
+                    <a href="home.html" class="btn btn-outline"><i class="fas fa-home"></i> Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => {
+                const container = document.getElementById('header-container');
+                container.innerHTML = html;
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const scripts = temp.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const s = document.createElement('script');
+                    if (oldScript.src) { s.src = oldScript.src; } else { s.textContent = oldScript.textContent; }
+                    document.body.appendChild(s);
+                });
+                if (typeof Header !== 'undefined') { new Header(); }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+
+    <!-- Load Footer Component -->
+    <script>
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(html => { document.getElementById('footer-container').innerHTML = html; })
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
+</body>
+</html>

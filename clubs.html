@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="desktop" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Clubs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Discover and join student clubs. Explore club details, upcoming events, and send join requests.">
+</head>
+<body>
+    <!-- Include Header Component -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Student Clubs</h1>
+                <p class="hero-subtitle">Connect with like-minded peers. Explore interests, build skills, and grow your campus network.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalClubs">0</span>
+                        <span class="stat-label">Total Clubs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalMembers">0</span>
+                        <span class="stat-label">Members</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalEvents">0</span>
+                        <span class="stat-label">Club Events</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="section">
+        <div class="container">
+            <div class="search-filter-container">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search clubs by name, description, or president..." class="search-input">
+                        <button class="search-clear" id="searchClear">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="active-filters" id="activeFilters"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs Grid Section -->
+    <section class="section">
+        <div class="container">
+            <div class="results-summary">
+                <p id="resultsCount">Showing 0 clubs</p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-container" id="loadingContainer">
+                <div class="loading-spinner"></div>
+                <p>Loading clubs...</p>
+            </div>
+
+            <!-- No Results State -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No clubs found</h3>
+                <p>Try adjusting your search</p>
+                <button class="btn btn-primary" id="resetSearch">Reset Search</button>
+            </div>
+
+            <div class="clubs-grid" id="clubsGrid">
+                <!-- Club cards will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <!-- Load Header Component -->
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => {
+                const container = document.getElementById('header-container');
+                container.innerHTML = html;
+
+                // Execute embedded scripts from header.html
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const scripts = temp.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const s = document.createElement('script');
+                    if (oldScript.src) {
+                        s.src = oldScript.src;
+                    } else {
+                        s.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(s);
+                });
+
+                if (typeof Header !== 'undefined') {
+                    new Header();
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+
+    <!-- Clubs Page JavaScript -->
+    <script src="dataStore.js" defer></script>
+    <script src="clubs.js" defer></script>
+
+    <!-- Load Footer Component -->
+    <script>
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(html => { document.getElementById('footer-container').innerHTML = html; })
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
+
+    <!-- Additional CSS for Clubs Page -->
+    <style>
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .stat-item { text-align: center; color: var(--white); }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 700; margin-bottom: var(--spacing-xs); }
+        .stat-label { font-size: 0.875rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .search-filter-container { background: var(--white); border-radius: var(--radius-lg); padding: var(--spacing-xl); box-shadow: var(--shadow-md); margin-bottom: var(--spacing-xl); }
+        .search-container { margin-bottom: var(--spacing-lg); }
+        .search-input-wrapper { position: relative; max-width: 700px; margin: 0 auto; }
+        .search-input { width: 100%; padding: var(--spacing-md) var(--spacing-xl) var(--spacing-md) 3rem; border: 2px solid var(--gray-200); border-radius: var(--radius-lg); font-size: 1rem; transition: all var(--transition-normal); }
+        .search-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(101, 85, 143, 0.1); }
+        .search-input-wrapper i { position: absolute; left: var(--spacing-md); top: 50%; transform: translateY(-50%); color: var(--gray-400); }
+        .search-clear { position: absolute; right: var(--spacing-md); top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gray-400); cursor: pointer; padding: var(--spacing-xs); border-radius: 50%; transition: all var(--transition-fast); }
+        .search-clear:hover { background: var(--gray-100); color: var(--gray-600); }
+        .active-filters { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
+        .filter-tag { background: var(--secondary-color); color: var(--primary-color); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-md); font-size: 0.875rem; display: flex; align-items: center; gap: var(--spacing-xs); }
+
+        .results-summary { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg); }
+
+        .clubs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-lg); }
+
+        .club-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-normal); height: 100%; display: flex; flex-direction: column; }
+        .club-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+
+        .club-header { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-lg); border-bottom: 1px solid var(--gray-100); }
+        .club-logo { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+        .club-title { font-size: 1.125rem; font-weight: 600; color: var(--gray-800); }
+        .club-subtitle { font-size: 0.875rem; color: var(--gray-500); }
+
+        .club-body { padding: var(--spacing-lg); flex: 1; display: flex; flex-direction: column; }
+        .club-description { color: var(--gray-600); margin-bottom: var(--spacing-md); line-height: 1.6; }
+
+        .club-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); margin-bottom: var(--spacing-md); }
+        .club-stat { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: var(--spacing-sm); text-align: center; font-size: 0.875rem; color: var(--gray-600); }
+        .club-stat i { color: var(--primary-color); margin-right: var(--spacing-xs); }
+
+        .club-meta { display: grid; grid-template-columns: 1fr; gap: var(--spacing-xs); color: var(--gray-600); font-size: 0.9rem; margin-bottom: var(--spacing-md); }
+        .club-meta span { display: flex; align-items: center; gap: var(--spacing-sm); }
+
+        .club-actions { display: flex; gap: var(--spacing-sm); margin-top: auto; }
+        .btn-join { background: var(--gradient); color: var(--white); border: none; padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--radius-md); font-weight: 500; cursor: pointer; transition: all var(--transition-normal); flex: 1; }
+        .btn-join:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn-join:disabled { background: var(--gray-300); cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-contact { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: var(--spacing-sm) var(--spacing-lg); border-radius: var(--radius-md); font-weight: 500; cursor: pointer; transition: all var(--transition-normal); }
+        .btn-contact:hover { background: var(--primary-color); color: var(--white); }
+
+        @media (max-width: 640px) {
+            .club-stats { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</body>
+</html>
+

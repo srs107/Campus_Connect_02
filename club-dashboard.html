@@ -438,7 +438,7 @@
     <div id="toastContainer" class="toast-container"></div>
 
     <!-- Club Dashboard JavaScript -->
-    <script src="club-dashboard.js"></script>
+    <script src="club-dashboard.js" defer></script>
 
     <!-- Additional CSS for Club Dashboard -->
     <style>
@@ -1165,5 +1165,16 @@
             }
         }
     </style>
+<!-- Shared Footer Component -->
+<div id="footer-container"></div>
+
+<!-- Load Footer Component -->
+<script>
+    fetch('footer.html')
+        .then(r => r.text())
+        .then(html => { document.getElementById('footer-container').innerHTML = html; })
+        .catch(err => console.error('Error loading footer:', err));
+</script>
+
 </body>
 </html>

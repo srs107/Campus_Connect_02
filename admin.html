@@ -9,53 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Admin Header -->
-    <header class="admin-header">
-        <div class="container">
-            <div class="admin-header-content">
-                <div class="admin-logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iMjAiIGZpbGw9IiM2NTU1OGYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IiM5MzMzZWEiLz4KPHN2ZyB4PSI1IiB5PSI3IiB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNNyAxM0wxNSA3SDI1TDE1IDEzTDE1IDIwSDd6Ii8+Cjwvc3ZnPgo8L3N2Zz4=" alt="MIT-ADT Logo">
-                    <div>
-                        <h1>Campus Connect</h1>
-                        <span class="admin-badge">Admin Dashboard</span>
-                    </div>
-                </div>
-                
-                <nav class="admin-nav">
-                    <a href="home.html" class="nav-link">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                    <a href="events.html" class="nav-link">
-                        <i class="fas fa-calendar"></i>
-                        <span>Events</span>
-                    </a>
-                    <a href="#" class="nav-link active">
-                        <i class="fas fa-cog"></i>
-                        <span>Admin</span>
-                    </a>
-                    <div class="admin-user">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" alt="Admin" class="admin-avatar">
-                        <div class="admin-user-info">
-                            <span class="admin-name">Admin User</span>
-                            <span class="admin-role">Administrator</span>
-                        </div>
-                        <button class="admin-logout" id="adminLogout">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <div id="header-container"></div>
 
-    <!-- Main Content -->
     <main class="admin-main">
         <div class="container">
-            <!-- Dashboard Statistics -->
+            <h1 class="text-center section-title">Admin Dashboard</h1>
+
             <section class="dashboard-stats">
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="card stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-calendar-check"></i>
                         </div>
@@ -65,7 +27,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="card stat-card">
                         <div class="stat-icon pending">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -75,7 +37,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="card stat-card">
                         <div class="stat-icon approved">
                             <i class="fas fa-check-circle"></i>
                         </div>
@@ -85,7 +47,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="card stat-card">
                         <div class="stat-icon users">
                             <i class="fas fa-users"></i>
                         </div>
@@ -97,559 +59,69 @@
                 </div>
             </section>
 
-            <!-- Pending Requests Section -->
             <section class="pending-requests-section">
-                <div class="section-header">
-                    <h2>Pending Requests</h2>
-                    <div class="section-actions">
-                        <button class="btn btn-outline" id="refreshPending">
-                            <i class="fas fa-sync-alt"></i>
-                            Refresh
-                        </button>
+                <div class="card p-4">
+                    <div class="section-header">
+                        <h2 class="card-title">Pending Requests</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-outline" id="refreshPending">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="pending-requests-container" id="pendingRequestsContainer">
-                    <!-- Pending requests will be loaded here -->
+                    <div class="pending-requests-container" id="pendingRequestsContainer">
+                        </div>
                 </div>
             </section>
 
-            <!-- All Events Section -->
             <section class="all-events-section">
-                <div class="section-header">
-                    <h2>All Events</h2>
-                    <div class="section-actions">
-                        <div class="search-container">
-                            <input type="text" id="eventsSearch" placeholder="Search events..." class="search-input">
-                            <i class="fas fa-search"></i>
+                <div class="card p-4">
+                    <div class="section-header">
+                        <h2 class="card-title">All Events</h2>
+                        <div class="section-actions">
+                            <div class="search-container">
+                                <input type="text" id="eventsSearch" placeholder="Search events..." class="search-input">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <select id="statusFilter" class="filter-select">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                            <button class="btn btn-outline" id="clearFilters">
+                                <i class="fas fa-times"></i>
+                                Clear
+                            </button>
                         </div>
-                        <select id="statusFilter" class="filter-select">
-                            <option value="all">All Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
-                            <option value="rejected">Rejected</option>
-                        </select>
-                        <button class="btn btn-outline" id="clearFilters">
-                            <i class="fas fa-times"></i>
-                            Clear
-                        </button>
                     </div>
-                </div>
-                
-                <div class="events-table-container">
-                    <table class="events-table" id="eventsTable">
-                        <thead>
-                            <tr>
-                                <th>Event</th>
-                                <th>Club</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Registrations</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="eventsTableBody">
-                            <!-- Events will be loaded here -->
-                        </tbody>
-                    </table>
+                    <div class="events-table-container">
+                        <table class="events-table" id="eventsTable">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Club</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Registrations</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventsTableBody">
+                                </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- Toast Container -->
-    <div id="toastContainer" class="toast-container"></div>
-
-    <!-- Admin Dashboard JavaScript -->
-    <script src="admin.js"></script>
-
-    <!-- Additional CSS for Admin Dashboard -->
-    <style>
-        /* Admin Header */
-        .admin-header {
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
-            padding: var(--spacing-md) 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .admin-header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .admin-logo {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
-
-        .admin-logo img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .admin-logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin: 0;
-        }
-
-        .admin-badge {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-md);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .admin-nav {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-lg);
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            color: var(--gray-600);
-            text-decoration: none;
-            padding: var(--spacing-sm) var(--spacing-md);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-fast);
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .nav-link i {
-            font-size: 1rem;
-        }
-
-        .admin-user {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-sm);
-            border-radius: var(--radius-md);
-            background: var(--gray-50);
-        }
-
-        .admin-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .admin-user-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .admin-name {
-            font-weight: 600;
-            color: var(--gray-800);
-            font-size: 0.875rem;
-        }
-
-        .admin-role {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        .admin-logout {
-            background: none;
-            border: none;
-            color: var(--gray-500);
-            cursor: pointer;
-            padding: var(--spacing-xs);
-            border-radius: var(--radius-sm);
-            transition: all var(--transition-fast);
-        }
-
-        .admin-logout:hover {
-            background: var(--gray-200);
-            color: var(--gray-700);
-        }
-
-        /* Main Content */
-        .admin-main {
-            padding: var(--spacing-xl) 0;
-            background: var(--gray-50);
-            min-height: calc(100vh - 80px);
-        }
-
-        /* Dashboard Statistics */
-        .dashboard-stats {
-            margin-bottom: var(--spacing-2xl);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-lg);
-        }
-
-        .stat-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-lg);
-            transition: all var(--transition-normal);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--white);
-            background: var(--gradient);
-        }
-
-        .stat-icon.pending {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .stat-icon.approved {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .stat-icon.users {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .stat-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin: 0 0 var(--spacing-xs) 0;
-        }
-
-        .stat-content p {
-            color: var(--gray-600);
-            margin: 0;
-            font-weight: 500;
-        }
-
-        /* Section Headers */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-lg);
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-
-        .section-header h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin: 0;
-        }
-
-        .section-actions {
-            display: flex;
-            gap: var(--spacing-md);
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Pending Requests */
-        .pending-requests-section {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            margin-bottom: var(--spacing-2xl);
-        }
-
-        .pending-requests-container {
-            display: grid;
-            gap: var(--spacing-md);
-        }
-
-        .pending-request-card {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-lg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: var(--spacing-lg);
-        }
-
-        .request-info {
-            flex: 1;
-        }
-
-        .request-title {
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .request-meta {
-            display: flex;
-            gap: var(--spacing-md);
-            color: var(--gray-600);
-            font-size: 0.875rem;
-        }
-
-        .request-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-        }
-
-        /* All Events Section */
-        .all-events-section {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-        }
-
-        .search-container {
-            position: relative;
-        }
-
-        .search-container input {
-            padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 2.5rem;
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius-md);
-            font-size: 0.875rem;
-            width: 250px;
-        }
-
-        .search-container i {
-            position: absolute;
-            left: var(--spacing-sm);
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray-400);
-        }
-
-        .filter-select {
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius-md);
-            font-size: 0.875rem;
-            background: var(--white);
-        }
-
-        /* Events Table */
-        .events-table-container {
-            overflow-x: auto;
-        }
-
-        .events-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: var(--spacing-lg);
-        }
-
-        .events-table th,
-        .events-table td {
-            padding: var(--spacing-md);
-            text-align: left;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .events-table th {
-            background: var(--gray-50);
-            font-weight: 600;
-            color: var(--gray-700);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .events-table tr:hover {
-            background: var(--gray-50);
-        }
-
-        .event-cell {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
-
-        .event-image {
-            width: 50px;
-            height: 50px;
-            border-radius: var(--radius-md);
-            object-fit: cover;
-        }
-
-        .event-details h4 {
-            font-weight: 600;
-            color: var(--gray-800);
-            margin: 0 0 var(--spacing-xs) 0;
-        }
-
-        .event-details p {
-            color: var(--gray-600);
-            font-size: 0.875rem;
-            margin: 0;
-        }
-
-        .status-badge {
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--radius-md);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-badge.pending {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .status-badge.approved {
-            background: #d1fae5;
-            color: #059669;
-        }
-
-        .status-badge.rejected {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: var(--spacing-xs);
-        }
-
-        .btn-action {
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border: none;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all var(--transition-fast);
-        }
-
-        .btn-approve {
-            background: #10b981;
-            color: var(--white);
-        }
-
-        .btn-approve:hover {
-            background: #059669;
-        }
-
-        .btn-reject {
-            background: #ef4444;
-            color: var(--white);
-        }
-
-        .btn-reject:hover {
-            background: #dc2626;
-        }
-
-        .btn-edit {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-edit:hover {
-            background: var(--purple-600);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .admin-header-content {
-                flex-direction: column;
-                gap: var(--spacing-md);
-            }
-
-            .admin-nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .section-actions {
-                justify-content: stretch;
-            }
-
-            .search-container input {
-                width: 100%;
-            }
-
-            .pending-request-card {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .request-actions {
-                justify-content: center;
-            }
-
-            .events-table {
-                font-size: 0.875rem;
-            }
-
-            .event-cell {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--spacing-sm);
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .admin-main {
-                padding: var(--spacing-lg) 0;
-            }
-
-            .pending-requests-section,
-            .all-events-section {
-                padding: var(--spacing-lg);
-            }
-
-            .stat-card {
-                padding: var(--spacing-lg);
-            }
-        }
-    </style>
+    <div id="toastContainer"></div>
+    <div id="footer-container"></div>
+
+    <script src="admin.js" defer></script>
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script>
 </body>
 </html>

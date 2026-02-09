@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Student Profile | Campus Connect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="student-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="profile-view-container">
+        <h2>My Profile</h2>
+        <div class="profile-card" id="profileCard">
+            <div id="profileDisplay" class="profile-section active">
+                <img id="profilePicView" src="https://via.placeholder.com/120x120/f3edf7/65558f?text=P" alt="Profile Picture" class="profile-photo">
+                <h3 id="nameView"></h3>
+                <p><strong>Email:</strong> <span id="emailView"></span></p>
+                <p><strong>Roll:</strong> <span id="rollNumberView"></span></p>
+                <p><strong>Department:</strong> <span id="departmentView"></span></p>
+                <p><strong>Year:</strong> <span id="yearView"></span></p>
+                <p><strong>CGPA:</strong> <span id="cgpaView"></span></p>
+                <p><strong>Internships:</strong> <span id="internshipsView"></span></p>
+                <p><strong>Projects:</strong> <span id="projectsView"></span></p>
+                <p><strong>Skills:</strong> <span id="skillsView"></span></p>
+                <p><strong>Interests:</strong> <span id="interestsView"></span></p>
+                <div id="linksView" class="profile-links">
+                    <a id="linkedinView" href="#" target="_blank" style="display:none;">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a id="githubView" href="#" target="_blank" style="display:none;">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div id="profileEdit" class="profile-section" style="display:none;">
+                <form id="studentProfileForm" class="profile-edit-form">
+                    <div class="profile-photo-section">
+                        <img id="profilePhotoPreview" src="https://via.placeholder.com/120x120/f3edf7/65558f?text=P" alt="Profile Photo" class="profile-photo">
+                        <input type="file" id="profilePhoto" accept="image/*" style="display:none;">
+                        <button type="button" class="btn btn-outline" id="uploadPhotoBtn">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </button>
+                    </div>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="text" name="rollNumber" placeholder="Roll Number" required>
+                    <input type="text" name="department" placeholder="Department" required>
+                    <input type="text" name="year" placeholder="Year" required>
+                    <input type="text" name="cgpa" placeholder="CGPA">
+                    <input type="text" name="internships" placeholder="Internships (comma separated)">
+                    <input type="text" name="projects" placeholder="Projects (comma separated)">
+                    <input type="text" name="skills" placeholder="Skills (comma separated)">
+                    <input type="text" name="interests" placeholder="Interests (comma separated)">
+                    <input type="url" name="linkedin" placeholder="LinkedIn URL">
+                    <input type="url" name="github" placeholder="GitHub URL">
+                    <input type="email" name="email" placeholder="Email" required readonly>
+                </form>
+            </div>
+        </div>
+        
+        <div class="profile-actions" id="actionButtons">
+            <button id="editBtn" class="btn btn-primary">Edit Profile</button>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+        <div class="profile-actions" id="editActionButtons" style="display:none;">
+            <button id="saveBtn" class="btn btn-primary">Save Changes</button>
+            <button id="cancelEditBtn" class="btn btn-outline">Cancel</button>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <script src="student-profile.js"></script>
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script>
+</body>
+</html>

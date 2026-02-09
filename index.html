@@ -334,13 +334,19 @@
 
             switch (role) {
                 case 'student':
-                    // Students can login with any credentials
+                    // Students can login with any credentials, then go to profile setup if needed
                     isValid = true;
-                    redirectUrl = 'home.html';
+                    const profiles = JSON.parse(localStorage.getItem("studentProfiles")) || {};
+                    const userProfile = profiles[username];
+                    
+                    if (userProfile && userProfile.isCompleted) {
+                        redirectUrl = 'home.html';
+                    } else {
+                        redirectUrl = 'student-profile-setup.html';
+                    }
                     break;
                     
                 case 'admin':
-                    // Admin: admin/admin123
                     if (username === 'admin' && password === 'admin123') {
                         isValid = true;
                         redirectUrl = 'admin.html';
@@ -348,7 +354,6 @@
                     break;
                     
                 case 'club':
-                    // Club: club/club123
                     if (username === 'club' && password === 'club123') {
                         isValid = true;
                         redirectUrl = 'club-dashboard.html';
@@ -357,11 +362,12 @@
             }
 
             if (isValid) {
-                // Store user role in localStorage
                 localStorage.setItem('userRole', role);
                 localStorage.setItem('username', username);
                 
-                // Redirect to appropriate page
+                const user = { username, role };
+                localStorage.setItem("currentUser", JSON.stringify(user));
+                
                 window.location.href = redirectUrl;
             } else {
                 showError('Invalid credentials for selected role');
@@ -371,17 +377,14 @@
 
         function showLoading(show) {
             const loading = document.querySelector('.loading');
-            const btnText = loginBtn.querySelector('span:not(.loading)');
-            
             if (show) {
                 loading.style.display = 'inline-block';
                 loginBtn.disabled = true;
-                loginBtn.textContent = 'Logging in...';
-                loginBtn.appendChild(loading);
+                loginBtn.innerHTML = 'Logging in... <span class="spinner"></span>';
             } else {
                 loading.style.display = 'none';
                 loginBtn.disabled = false;
-                loginBtn.textContent = 'Login';
+                loginBtn.innerHTML = 'Login';
             }
         }
 
@@ -394,8 +397,7 @@
             errorMessage.style.display = 'none';
         }
 
-        // Initialize role select with current role
         roleSelect.value = currentRole;
     </script>
 </body>
-</html> 
+</html>

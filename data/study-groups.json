@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Math Wizards",
+    "subject": "Mathematics",
+    "description": "A group for students who want to master calculus, algebra, and more. Weekly problem-solving sessions and exam prep.",
+    "contact": "mathwizards@email.com"
+  },
+  {
+    "name": "Code Masters",
+    "subject": "Computer Science",
+    "description": "Collaborate on coding projects, prepare for hackathons, and help each other with assignments.",
+    "contact": "codemasters@email.com"
+  },
+  {
+    "name": "Bio Study Buddies",
+    "subject": "Biology",
+    "description": "Discuss concepts, share notes, and prepare for practicals and theory exams together.",
+    "contact": "bio.study@email.com"
+  },
+  {
+    "name": "Business Brains",
+    "subject": "Business Administration",
+    "description": "Case study discussions, group presentations, and exam strategies for business students.",
+    "contact": "bizbrains@email.com"
+  }
+  
+  
+]
